@@ -37,7 +37,7 @@ const handleUserKeyPress = useCallback(event => {
 
     console.log(birdArray[0])
     if(key.toUpperCase() === birdArray[0]){
-      setBirdArray( prev => prev.slice(1).reverse())
+      setBirdArray( prev => prev.filter(e => e !== birdArray[0]).reverse())
       setWrong(false)
     } else {
       setWrong(true)
@@ -63,13 +63,15 @@ useEffect(()=>{
 }, [currentBird])
 
 return (
-  <div>
+  <div className="cont">
     <h3>User needs to press the first letter of the name from keyboard, then the last,
-then the first again etc!</h3>
-<i>press any key to move to the next name!</i>
-<blockquote>You typed: {userText}{wrong && <span> This is wrong letter</span>}</blockquote>
-    <blockquote>Current name: {currentBird}</blockquote>
-    <blockquote>Letters left to be pressed: {birdArray.join(" ")}</blockquote>
+    then the first again etc!</h3>
+    <i>press any key to move to the next name!</i>
+    <div className="game">
+      <blockquote>You typed: {userText}{wrong && <span className="wrong"> This is wrong letter</span>}</blockquote>
+      <blockquote>Current name: {currentBird}</blockquote>
+      <blockquote>Letters left: {birdArray.join("\u00B7")}</blockquote>
+    </div>
   </div>
 );
 }

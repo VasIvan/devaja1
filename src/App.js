@@ -4,7 +4,7 @@ import KeyDown from './KeyDown'
 
 function App() {
   return (
-    <div>
+    <div className="App">
 <KeyDown />
 </div>
   );
